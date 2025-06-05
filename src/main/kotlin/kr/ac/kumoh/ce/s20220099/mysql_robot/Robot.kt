@@ -4,8 +4,9 @@ import jakarta.persistence.Entity
 import jakarta.persistence.*
 import jakarta.persistence.Table
 
+
 @Entity
-@Table(name="Mechanic")
+@Table(name = "Mechanic")
 data class Robot(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,4 +16,26 @@ data class Robot(
     var manufacturer: String,
     @Column(name = "class")
     var robotClass: String,
+)
+
+@Entity
+data class Weapon(
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    val id: Int,
+    val name: String,
+    val type: String,
+    val damage: Int,
+    val ability: String,
+)
+
+@Entity
+data class Equipment(
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    val id: Int,
+    var mechanicId: Int,
+    var weaponId: Int,
+    val location: String,
+    val quantity: Int
 )
